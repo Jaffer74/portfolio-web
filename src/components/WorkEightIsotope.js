@@ -36,7 +36,7 @@ const WorkEightIsotope = () => {
                   >
                     <img
                       decoding="async"
-                      src="assets/images/811.png"
+                      src="assets/images/715.jpg"
                       alt="Item 1"
                       loading="lazy"
                     />
