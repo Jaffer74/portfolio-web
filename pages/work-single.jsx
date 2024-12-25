@@ -130,7 +130,7 @@ const WorkSingle = () => {
       <div className="section section-inner">
         <div className="container">
           {/* Section Gallery */}
-          <WorkSingleISotope />
+          <WorkSingleIsotope />
         </div>
       </div>
       {/* Section - Description */}
