@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
 import Layout from "../src/layouts/Layout";
-const WorkSingleISotope = dynamic(
-  () => import("../src/components/WorkSingleISotope"),
+const WorkSingleIsotope = dynamic(
+  () => import("../src/components/WorkSingleIsotope"),
   {
     ssr: false,
   }
