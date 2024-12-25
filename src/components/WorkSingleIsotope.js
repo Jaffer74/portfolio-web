@@ -1,6 +1,6 @@
 import Isotope from "isotope-layout";
 import { Fragment, useEffect, useRef } from "react";
-const WorkSingleISotope = () => {
+const WorkSingleIsotope = () => {
   const isotope = useRef();
   useEffect(() => {
     setTimeout(() => {
@@ -88,4 +88,4 @@ const WorkSingleISotope = () => {
     </Fragment>
   );
 };
-export default WorkSingleISotope;
+export default WorkSingleIsotope;
