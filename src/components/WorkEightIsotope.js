@@ -31,7 +31,7 @@ const WorkEightIsotope = () => {
               >
                 <div className="img">
                   <a
-                    href="assets/images/811.png"
+                    href="assets/images/715.jpg"
                     className="has-popup-image"
                   >
                     <img
