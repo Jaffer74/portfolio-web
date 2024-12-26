@@ -5,9 +5,11 @@ const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
+server.listen(port, (err) => {
+  if (err) throw err;
   console.log(`Server running on port ${port}`);
 });
+
 
 
 const cors = require('cors');
