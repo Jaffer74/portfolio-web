@@ -8,6 +8,7 @@ import {
   servicesSliderProps,
   testimonialsSliderProps,
 } from "../src/sliderProps";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 const PortfolioIsotope = dynamic(
   () => import("../src/components/PortfolioIsotope"),
   {
@@ -40,7 +41,7 @@ const Index = () => {
       message: e.target.message.value,
     };
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch(`${BACKEND_URL}/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
