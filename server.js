@@ -4,12 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
-const port = process.env.PORT || 5000;
-server.listen(port, (err) => {
-  if (err) throw err;
-  console.log(`Server running on port ${port}`);
-});
-
+const port = 5000;
 
 
 const cors = require('cors');
