@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Resume from "../src/components/Resume";
 import Layout from "../src/layouts/Layout";
+import React, { useState } from "react";
 import {
   servicesSliderProps,
   testimonialsSliderProps,
@@ -14,6 +15,55 @@ const PortfolioIsotope = dynamic(
   }
 );
 const Index = () => {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      subject: e.target.subject.value, 
+      message: e.target.message.value,
+    };
+    try {
+      const response = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        setSuccessMessage("Thanks, your message has been sent successfully.");
+        setErrorMessage("");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setErrorMessage("Failed to send your message. Please try again.");
+        setSuccessMessage("");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setErrorMessage("An error occurred. Please try again.");
+      setSuccessMessage("");
+    }
+  };
+  
+
   return (
     <Layout pageClassName={"home"}>
       {/* Section - Hero Started */}
@@ -77,7 +127,7 @@ const Index = () => {
                 <div className="bts">
                   <a
                     target="_blank"
-                    href="https://drive.google.com/"
+                    href=""
                     className="btn"
                   >
                     <span>Download CV</span>
@@ -1307,13 +1357,19 @@ const Index = () => {
                     }}
                   />
                   <div className="contacts-form">
-                    <form onSubmit={(e) => e.preventDefault()} id="cform">
+                    <form onSubmit={handleSubmit} id="cform">
                       <div className="row">
                         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                           <div className="group">
                             <label>
                               Your Full Name <b>*</b>
-                              <input type="text" name="name" />
+                              <input 
+                              type="text" 
+                              name="name" 
+                              value={formData.name}
+                              onChange={handleChange}
+                              required
+                              />
                             </label>
                           </div>
                         </div>
@@ -1321,7 +1377,13 @@ const Index = () => {
                           <div className="group">
                             <label>
                               Your Email Address <b>*</b>
-                              <input type="email" name="email" />
+                              <input 
+                              type="email" 
+                              name="email" 
+                              value={formData.email}
+                              onChange={handleChange}
+                              required  
+                              />
                             </label>
                           </div>
                         </div>
@@ -1329,7 +1391,13 @@ const Index = () => {
                           <div className="group">
                             <label>
                               Your Subject <b>*</b>
-                              <input type="text" name="subject" />
+                              <input 
+                              type="text" 
+                              name="subject"
+                              value={formData.subject}
+                              onChange={handleChange} 
+                              required
+                              />
                             </label>
                           </div>
                         </div>
@@ -1337,7 +1405,12 @@ const Index = () => {
                           <div className="group">
                             <label>
                               Your Message <b>*</b>
-                              <textarea name="message" defaultValue={""} />
+                              <textarea 
+                              name="message" 
+                              value={formData.message}
+                              onChange={handleChange}
+                              required
+                              />
                             </label>
                           </div>
                         </div>
@@ -1345,19 +1418,25 @@ const Index = () => {
                           <div className="terms-label">
                             * Accept the terms and conditions.
                           </div>
-                          <a
-                            href="#"
+                          <button
+                            type="submit"
                             className="btn"
-                            onclick="$('#cform').submit(); return false;"
                           >
                             <span>Send Message</span>
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </form>
-                    <div className="alert-success" style={{ display: "none" }}>
-                      <p>Thanks, your message is sent successfully.</p>
-                    </div>
+                    {successMessage && (
+                      <div className="alert-success">
+                        <p>{successMessage}</p>
+                      </div>
+                    )}
+                    {errorMessage && (
+                      <div className="alert-error">
+                        <p>{errorMessage}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
