@@ -29,7 +29,7 @@ const Header = () => {
                     <img
                       width={228}
                       height={38}
-                      src="assets/images/jafferdev.jpg"
+                      src="assets/images/jafferdev.png"
                       alt=""
                     />
                   </a>
