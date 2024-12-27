@@ -31,12 +31,12 @@ const WorkSixIsotope = () => {
               >
                 <div className="img">
                   <a
-                    href="assets/images/77.jpeg"
+                    href="assets/images/77.png"
                     className="has-popup-image"
                   >
                     <img
                       decoding="async"
-                      src="assets/images/77.jpeg"
+                      src="assets/images/77.png"
                       alt="Item 1"
                       loading="lazy"
                     />
