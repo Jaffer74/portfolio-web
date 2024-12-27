@@ -71,10 +71,10 @@ const WorkSixIsotope = () => {
                 data-animate="active"
               >
                 <div className="img">
-                  <a href="assets/images/78.jpeg" className="has-popup-image">
+                  <a href="assets/images/79.png" className="has-popup-image">
                     <img
                       decoding="async"
-                      src="assets/images/78.jpeg"
+                      src="assets/images/79.png"
                       alt="Item 3"
                       loading="lazy"
                     />
