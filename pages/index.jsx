@@ -179,7 +179,7 @@ const Index = () => {
                     </li>
                     <li>
                       <span className="num">
-                        10 <strong>+</strong>
+                        20 <strong>+</strong>
                       </span>
                       <span className="value">
                         Completed <strong>Projects</strong>
@@ -1084,7 +1084,7 @@ const Index = () => {
               <div className="swiper-pagination" />
             </Swiper>
             <div className="lui-bgtitle">
-              <span> Reviews </span>
+              <span> Certifications </span>
             </div>
           </div>
         </div>
